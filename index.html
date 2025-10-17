@@ -13,7 +13,6 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     
     <style>
-        /* ALL YOUR EXISTING CSS REMAINS EXACTLY THE SAME */
         :root {
             --bg-color: #1a1a1a;
             --surface-color: #2c2c2c;
@@ -29,7 +28,7 @@
             --score-na: #9E9E9E;
             --accent-gold: #D4AF37;
             --accent-earth: #795548;
-            --mindfulness-color: #2196F3;
+            --mindfulness-color: #6A5ACD;
         }
 
         [data-theme="light"] {
@@ -42,7 +41,7 @@
             --border-color: #ddd;
             --accent-gold: #D4AF37;
             --accent-earth: #795548;
-            --mindfulness-color: #1976D2;
+            --mindfulness-color: #6A5ACD;
         }
 
         * {
@@ -65,7 +64,7 @@
             max-width: 800px;
             margin: 0 auto;
             padding: 1rem;
-            padding-bottom: 90px;
+            padding-bottom: 90px; /* Extra space for mobile nav */
         }
 
         /* --- Navigation --- */
@@ -288,93 +287,6 @@
             background-color: var(--surface-color);
             border-radius: 12px;
             font-style: italic;
-        }
-        
-        /* --- Mindfulness Section --- */
-        .mindfulness-section {
-            margin-top: 2rem;
-            background-color: var(--surface-color);
-            border-radius: 12px;
-            padding: 1.5rem;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            border-left: 4px solid var(--mindfulness-color);
-        }
-        
-        .mindfulness-section h3 {
-            margin-top: 0;
-            color: var(--mindfulness-color);
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 0.5rem;
-        }
-        
-        .mindfulness-description {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            margin-bottom: 1rem;
-            text-align: center;
-            font-style: italic;
-        }
-        
-        .mindfulness-scoring {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 1rem;
-        }
-        
-        .mindfulness-buttons {
-            display: flex;
-            gap: 0.5rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        
-        .mindfulness-btn {
-            border: 1px solid var(--border-color);
-            background: transparent;
-            color: var(--text-color);
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-weight: bold;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-width: 44px;
-            min-height: 44px;
-        }
-        
-        .mindfulness-btn:hover {
-            transform: scale(1.1);
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-        }
-        
-        .mindfulness-btn.selected {
-            color: white;
-            transform: scale(1.1);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-        }
-        
-        .mindfulness-btn[data-score="0"].selected { background-color: var(--score-0); border-color: var(--score-0); }
-        .mindfulness-btn[data-score="1"].selected { background-color: var(--score-1); border-color: var(--score-1); }
-        .mindfulness-btn[data-score="2"].selected { background-color: var(--score-2); border-color: var(--score-2); }
-        .mindfulness-btn[data-score="3"].selected { background-color: var(--score-3); border-color: var(--score-3); }
-        
-        .mindfulness-labels {
-            display: flex;
-            justify-content: space-between;
-            width: 100%;
-            max-width: 300px;
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            text-align: center;
-        }
-        
-        .mindfulness-label {
-            flex: 1;
-            padding: 0 0.25rem;
         }
         
         /* --- Notes Section --- */
@@ -1194,13 +1106,6 @@
                 min-height: 40px;
             }
             
-            .mindfulness-btn {
-                width: 40px;
-                height: 40px;
-                min-width: 40px;
-                min-height: 40px;
-            }
-            
             .stat-card {
                 min-width: 100px;
                 padding: 1rem;
@@ -1278,44 +1183,6 @@
         .install-prompt button {
             margin: 0.5rem;
         }
-
-        /* --- Backup Status --- */
-        .backup-status {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            margin-top: 0.5rem;
-            text-align: center;
-        }
-        
-        .backup-success {
-            color: var(--score-3);
-        }
-        
-        .backup-error {
-            color: var(--score-0);
-        }
-
-        /* --- Mobile Backup Options --- */
-        .mobile-backup-options {
-            margin-top: 1rem;
-            padding: 1rem;
-            background-color: var(--bg-color);
-            border-radius: 8px;
-            border-left: 4px solid var(--primary-color);
-        }
-        
-        .backup-option-btn {
-            width: 100%;
-            margin: 0.5rem 0;
-            padding: 0.75rem;
-        }
-        
-        .backup-info {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            margin-top: 0.5rem;
-            text-align: center;
-        }
     </style>
 </head>
 <body>
@@ -1323,7 +1190,7 @@
     <div class="container">
         <div class="app-header">
             <h1 class="app-title">Ritual Tracker</h1>
-            <p class="app-subtitle">Master your awareness, concentration, and willpower</p>
+            <p class="app-subtitle">Master your awareness, concentration, willpower, and mindfulness</p>
         </div>
         
         <!-- Install Prompt -->
@@ -1341,29 +1208,6 @@
             </div>
             <div id="date-validation-message"></div>
             <div id="today-rituals-container"></div>
-            
-            <!-- Mindfulness Section -->
-            <div class="mindfulness-section">
-                <h3>Mindfulness Level</h3>
-                <div class="mindfulness-description">
-                    How present and aware were you throughout the day?
-                </div>
-                <div class="mindfulness-scoring">
-                    <div class="mindfulness-buttons">
-                        <button class="mindfulness-btn" data-score="0">0</button>
-                        <button class="mindfulness-btn" data-score="1">1</button>
-                        <button class="mindfulness-btn" data-score="2">2</button>
-                        <button class="mindfulness-btn" data-score="3">3</button>
-                    </div>
-                    <div class="mindfulness-labels">
-                        <div class="mindfulness-label">Never</div>
-                        <div class="mindfulness-label">Rarely</div>
-                        <div class="mindfulness-label">Often</div>
-                        <div class="mindfulness-label">Always</div>
-                    </div>
-                    <div class="score-description" id="mindfulness-description"></div>
-                </div>
-            </div>
             
             <div class="notes-section">
                 <h3>Daily Notes</h3>
@@ -1390,7 +1234,7 @@
                 </div>
                 <div class="stat-card combined-stat">
                     <div class="stat-value" id="combined-avg">0.00</div>
-                    <div class="stat-label">Overall Avg</div>
+                    <div class="stat-label">Combined Avg</div>
                 </div>
             </div>
             
@@ -1432,7 +1276,7 @@
             <div id="chart-container">
                 <h3>Performance Over Time</h3>
                 <div class="chart-toggle">
-                    <button id="show-combined" class="active">Overall</button>
+                    <button id="show-combined" class="active">Combined</button>
                     <button id="show-concentration">Concentration</button>
                     <button id="show-willpower">Willpower</button>
                     <button id="show-mindfulness">Mindfulness</button>
@@ -1462,16 +1306,212 @@
             <h1>Focus & Willpower Guide</h1>
             
             <div class="summary-content">
-                <!-- Your existing summary content remains the same -->
                 <div class="summary-section">
                     <h2>Overall Thesis</h2>
                     <p>The ability to focus is the foundational skill for creating a life of purpose and joy. By understanding the mechanics of your mind and learning to control your awareness, you can direct your energy to manifest your goals, overcome mental ailments, and live a truly rewarding and present life. This is not achieved through hacks, but through consistent, patient practice.</p>
                 </div>
-                <!-- ... rest of your summary content ... -->
+
+                <div class="summary-section">
+                    <h2>Part 1: A Life of Purpose and Joy</h2>
+                    <p>This section establishes the "why" behind the pursuit of focus.</p>
+                    
+                    <h3>Chapter 1: Foundations for a Concentrated Mind</h3>
+                    
+                    <h4>Lesson 1.1: Living a Purpose-Focused Life</h4>
+                    <ul>
+                        <li>You discover your life's purpose with your mind. Therefore, you must first understand and master your mind to have the clarity and focus needed for that discovery.</li>
+                        <li>Happiness is a by-product of living a purpose-focused life, not a goal to be pursued directly.</li>
+                        <li>The sequence is: Understand the Mind → Learn to Focus → Discover Your Purpose → Define Priorities → Live a Purpose-Focused Life → Experience Joy.</li>
+                    </ul>
+                    
+                    <h4>Lesson 1.2: Taking Charge</h4>
+                    <ul>
+                        <li>We have a choice in what we focus on, even in difficult circumstances (e.g., the smiling man from Mauritius, Nelson Mandela).</li>
+                        <li>The mind itself does not know what is good for you; it must be trained with the right information.</li>
+                        <li>The Three States of Mind:
+                            <ul>
+                                <li><strong>Conscious Mind:</strong> The instinctive mind, tied to the senses.</li>
+                                <li><strong>Subconscious Mind:</strong> The intellectual "hard drive," storing memories and habit patterns.</li>
+                                <li><strong>Superconscious Mind:</strong> The all-knowing intelligence of the soul, source of intuition.</li>
+                            </ul>
+                        </li>
+                        <li>Uplifting yourself energetically uplifts everyone connected to you.</li>
+                    </ul>
+                    
+                    <h4>Lesson 1.3: Desire, Life's Supreme Force</h4>
+                    <ul>
+                        <li>A burning, inextinguishable desire is the primary force behind any great achievement.</li>
+                        <li>The intensity of your desire determines what you are willing to do and sacrifice. Doubts and struggles are normal, but the desire must remain paramount.</li>
+                    </ul>
+                    
+                    <h4>Lesson 1.4: Making the Case</h4>
+                    <ul>
+                        <li>To sustain the pursuit of a focused life, you must "make the case" to yourself for why it's essential. Without this internal buy-in, you lack the impetus to follow through.</li>
+                    </ul>
+                    
+                    <h3>Chapter 2: Setting Up for Success</h3>
+                    <p>This chapter outlines the key attitudes and motivations for the journey.</p>
+                    
+                    <h4>Lesson 2.1: Life Is Meant to Be Lived Joyously (The First Impetus)</h4>
+                    <ul>
+                        <li>Focus allows you to be fully present in your experiences, which is the key to deriving joy and happiness from them.</li>
+                    </ul>
+                    
+                    <h4>Lesson 2.2: Manifesting the Life You Want (The Second Impetus)</h4>
+                    <ul>
+                        <li>Core Principle: "Life is a manifestation of where you invest your energy."</li>
+                        <li>Energy, like water, has no discrimination; it grows whatever you invest it in (weeds or flowers). Focus is the tool that directs your energy toward your goals.</li>
+                    </ul>
+                    
+                    <h4>Lesson 2.3: Death, the Greatest Impetus (The Third Impetus)</h4>
+                    <ul>
+                        <li>The realization that life is finite (not "short") provides the ultimate clarity on your true priorities.</li>
+                        <li>"When you shrink time, you increase the clarity of focus." Contemplating death helps you identify who and what truly matters.</li>
+                    </ul>
+                    
+                    <h4>Lesson 2.4: The Law of Practice</h4>
+                    <ul>
+                        <li>"Whatever it is you practice is that which you become good at."</li>
+                        <li>Consistency and correct practice are key. Most people fail because they constantly seek new tools instead of mastering a few through endless repetition.</li>
+                    </ul>
+                    
+                    <h4>Lesson 2.5: Intention and Obedience</h4>
+                    <ul>
+                        <li>Set a clear intention for what you want from this book and your practice.</li>
+                        <li>Practice "intelligent obedience"—follow the teachings of a trusted guide (the author) diligently, as you would a surgeon or pilot.</li>
+                    </ul>
+                    
+                    <h4>Lesson 2.6: The Power of Small</h4>
+                    <ul>
+                        <li>The journey must be approached with patience, in small, manageable steps. Overwhelm is the enemy of progress.</li>
+                        <li>Focus on taking the next small, doable step rather than being daunted by the entire journey.</li>
+                    </ul>
+                </div>
+
+                <div class="summary-section">
+                    <h2>Part 2: The Ineffable Mind</h2>
+                    <p>This section provides the core model for understanding how your mind works.</p>
+                    
+                    <h3>Chapter 3: Understanding the Mind</h3>
+                    
+                    <h4>Lesson 3.1: The World's Most Powerful Tool</h4>
+                    <ul>
+                        <li>The mind is our most powerful tool, yet it comes with no manual and is rarely taught.</li>
+                    </ul>
+                    
+                    <h4>Lesson 3.2: The Mind's Great Secret (The Core Teaching)</h4>
+                    <ul>
+                        <li>Awareness is a glowing ball of light that can move.</li>
+                        <li>The Mind is a vast space with many different areas (e.g., areas of happiness, anger, creativity).</li>
+                        <li>You are not your mind. You are pure awareness traveling through different areas of the mind.</li>
+                        <li>Wherever your awareness goes, that area of the mind "lights up," and you become conscious of it and experience it.</li>
+                        <li>You can learn to control where your awareness goes using willpower and concentration.</li>
+                    </ul>
+                    
+                    <h4>Lesson 3.3: The Mind as a Mansion</h4>
+                    <ul>
+                        <li>An analogy: The mind is a mansion with many rooms (each an area of the mind). You, as awareness, can choose which room to enter and experience.</li>
+                    </ul>
+                    
+                    <h4>Lesson 3.4: Awareness as a Traveler</h4>
+                    <ul>
+                        <li>Another analogy: Awareness is a traveler visiting different cities (areas of the mind). You are not the city; you are the traveler having an experience there.</li>
+                    </ul>
+                </div>
+
+                <div class="summary-section">
+                    <h2>Part 3: The Practice of Focus</h2>
+                    <p>This section provides practical techniques and exercises to develop your focus and concentration.</p>
+                    
+                    <h3>Chapter 4: Developing Concentration</h3>
+                    
+                    <h4>Lesson 4.1: The Foundation of All Mental Powers</h4>
+                    <ul>
+                        <li>Concentration is the ability to direct and hold your awareness on a single point or task.</li>
+                        <li>Without concentration, mental energy scatters and becomes ineffective.</li>
+                        <li>All great achievements in any field require sustained concentration.</li>
+                        <li>Concentration is like a muscle - it must be exercised regularly to grow stronger.</li>
+                        <li>Start with short periods of focused attention and gradually increase the duration.</li>
+                    </ul>
+                    
+                    <h4>Lesson 4.2: The Three Pillars of Concentration</h4>
+                    <ul>
+                        <li><strong>Single-Pointed Attention:</strong> The ability to focus on one thing at a time without distraction.</li>
+                        <li><strong>Sustained Attention:</strong> The ability to maintain focus over extended periods.</li>
+                        <li><strong>Flexible Attention:</strong> The ability to shift focus intentionally when needed.</li>
+                        <li>These three pillars work together to create powerful, adaptable concentration.</li>
+                    </ul>
+                    
+                    <h4>Lesson 4.3: Daily Concentration Exercises</h4>
+                    <ul>
+                        <li><strong>Breath Awareness:</strong> Focus on your breath for 5-10 minutes daily, gently returning when the mind wanders.</li>
+                        <li><strong>Object Focus:</strong> Choose an object and study it intently for several minutes, noticing every detail.</li>
+                        <li><strong>Mantra Repetition:</strong> Repeat a meaningful word or phrase silently, maintaining focus on the sound and vibration.</li>
+                        <li><strong>Body Scan:</strong> Move your awareness systematically through different parts of your body.</li>
+                    </ul>
+                    
+                    <h3>Chapter 5: Cultivating Willpower</h3>
+                    
+                    <h4>Lesson 5.1: The Energy of Action</h4>
+                    <ul>
+                        <li>Willpower is the force that translates intention into action.</li>
+                        <li>It's the bridge between knowing what to do and actually doing it.</li>
+                        <li>Willpower is finite but can be strengthened through consistent practice.</li>
+                        <li>Small acts of discipline build willpower like small weights build muscle.</li>
+                    </ul>
+                    
+                    <h4>Lesson 5.2: The Willpower Reserve</h4>
+                    <ul>
+                        <li>Willpower operates like a reservoir that can be depleted or replenished.</li>
+                        <li>Factors that deplete willpower: decision fatigue, stress, lack of sleep, poor nutrition.</li>
+                        <li>Factors that replenish willpower: rest, meditation, healthy food, positive emotions.</li>
+                        <li>Manage your willpower reserve by tackling important tasks when your energy is highest.</li>
+                    </ul>
+                    
+                    <h4>Lesson 5.3: Daily Willpower Practices</h4>
+                    <ul>
+                        <li><strong>Morning Routine:</strong> Establish and maintain a consistent morning routine.</li>
+                        <li><strong>Digital Discipline:</strong> Practice intentional use of technology rather than reactive scrolling.</li>
+                        <li><strong>Healthy Habits:</strong> Make conscious choices about nutrition, exercise, and rest.</li>
+                        <li><strong>Task Completion:</strong> Follow through on small commitments and promises to yourself.</li>
+                    </ul>
+                    
+                    <h3>Chapter 6: Integrating Focus into Daily Life</h3>
+                    
+                    <h4>Lesson 6.1: The Focused Environment</h4>
+                    <ul>
+                        <li>Create physical and digital environments that support concentration.</li>
+                        <li>Minimize distractions and clutter in your workspace.</li>
+                        <li>Use technology intentionally rather than allowing it to use you.</li>
+                        <li>Establish boundaries to protect your focus time.</li>
+                    </ul>
+                    
+                    <h4>Lesson 6.2: Mindful Transitions</h4>
+                    <ul>
+                        <li>Practice conscious transitions between activities rather than rushing.</li>
+                        <li>Take a brief pause before starting a new task to set intention.</li>
+                        <li>Use transitions as opportunities to reset and refocus your awareness.</li>
+                        <li>Notice the space between activities - this is where presence lives.</li>
+                    </ul>
+                    
+                    <h4>Lesson 6.3: The Rhythm of Work and Rest</h4>
+                    <ul>
+                        <li>Work in focused bursts followed by intentional rest periods.</li>
+                        <li>The Pomodoro Technique: 25 minutes of focused work followed by 5 minutes of rest.</li>
+                        <li>Respect your natural energy cycles throughout the day.</li>
+                        <li>Quality of focus matters more than quantity of hours worked.</li>
+                    </ul>
+                </div>
+
+                <div class="summary-section">
+                    <h2>Conclusion</h2>
+                    <p>The teachings in this book are a gift. Their transformative power is unlocked not by reading, but by a burning desire to implement them consistently. The greatest gift you can give the author is to master your awareness and live a focused, purposeful life.</p>
+                    <p>Remember that progress in developing focus and willpower is rarely linear. There will be days of great clarity and days of struggle. What matters is returning to the practice again and again, with patience and compassion for yourself. Each moment of conscious awareness, each intentional action, each act of discipline - no matter how small - strengthens your capacity for focus and moves you closer to the life of purpose and joy you seek.</p>
+                </div>
             </div>
         </div>
 
-        <!-- NOTES VIEW -->
+        <!-- NEW NOTES VIEW -->
         <div id="notes-view" class="view">
             <h1>My Notes</h1>
             
@@ -1522,36 +1562,6 @@
                         <input type="time" id="reminder-time" value="20:00" aria-label="Reminder time">
                         <button id="add-reminder-btn" class="form-button add-reminder-btn">Add Reminder</button>
                     </div>
-                </div>
-            </div>
-
-            <div class="settings-card">
-                <h3>Daily Auto Backup</h3>
-                <p>Automatically backup your data daily at a specified time.</p>
-                <div class="reminder-settings">
-                    <div class="reminder-toggle">
-                        <span class="theme-toggle-label">Enable Auto Backup</span>
-                        <label class="switch">
-                            <input type="checkbox" id="auto-backup-toggle" aria-label="Enable auto backup">
-                            <span class="slider"></span>
-                        </label>
-                    </div>
-                    <div class="reminder-time">
-                        <input type="time" id="backup-time" value="23:00" aria-label="Backup time">
-                        <button id="backup-now-btn" class="form-button">Backup Now</button>
-                        <button id="backup-location-btn" class="form-button btn-secondary">Choose Folder</button>
-                    </div>
-                    
-                    <!-- Mobile-specific backup options -->
-                    <div id="mobile-backup-options" class="mobile-backup-options" style="display: none;">
-                        <h4>Mobile Backup Options</h4>
-                        <button id="share-backup-btn" class="form-button backup-option-btn">Share Backup File</button>
-                        <button id="save-to-drive-btn" class="form-button backup-option-btn">Save to Cloud Drive</button>
-                        <button id="download-backup-btn" class="form-button backup-option-btn">Download to Device</button>
-                        <p class="backup-info">On mobile, choose how you want to save your backup file</p>
-                    </div>
-                    
-                    <div id="backup-status" class="backup-status"></div>
                 </div>
             </div>
             
@@ -1631,19 +1641,15 @@
             let appData = {
                 rituals: { concentration: [], willpower: [] },
                 scores: {},
-                mindfulness: {},
                 notes: {},
                 customNotes: [],
+                mindfulness: {}, // Added mindfulness scores
                 settings: {
                     reminders: {
                         enabled: false,
                         times: ["20:00"]
                     },
-                    theme: "dark",
-                    autoBackup: {
-                        enabled: false,
-                        time: "23:00"
-                    }
+                    theme: "dark"
                 }
             };
 
@@ -1653,12 +1659,6 @@
             let selectedHabitId = null;
             let reminderTimeouts = [];
             let currentNoteEditId = null;
-            let backupTimeouts = [];
-            let backupDirectoryHandle = null;
-            
-            // Detect if we're on a mobile device
-            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-            const isAndroid = /Android/i.test(navigator.userAgent);
             
             // PWA Install Prompt
             let deferredPrompt;
@@ -1671,11 +1671,12 @@
                 '-1': 'I could not perform this ritual today due to unavoidable circumstances.'
             };
 
-            const mindfulnessMap = {
-                '0': 'Never - Mind wandering frequently, not present',
-                '1': 'Rarely - Some awareness but easily distracted', 
-                '2': 'Often Mindful - Generally present with some lapses',
-                '3': 'Always - Fully present and aware throughout the day'
+            // Mindfulness score map
+            const mindfulnessScoreMap = {
+                '3': 'Always - I was mindful throughout the day',
+                '2': 'Often - I was mindful frequently',
+                '1': 'Rarely - I was mindful occasionally',
+                '0': 'Never - I was not mindful today'
             };
 
             // --- DOM ELEMENTS ---
@@ -1687,8 +1688,6 @@
             const dateValidationMessage = document.getElementById('date-validation-message');
             const todayRitualsContainer = document.getElementById('today-rituals-container');
             const dailyNotes = document.getElementById('daily-notes');
-            const mindfulnessButtons = document.querySelectorAll('.mindfulness-btn');
-            const mindfulnessDescription = document.getElementById('mindfulness-description');
             const addConcentrationForm = document.getElementById('add-concentration-form');
             const newConcentrationInput = document.getElementById('new-concentration-ritual');
             const newConcentrationDescription = document.getElementById('new-concentration-description');
@@ -1726,6 +1725,8 @@
             const addReminderBtn = document.getElementById('add-reminder-btn');
             const reminderList = document.getElementById('reminder-list');
             const notification = document.getElementById('notification');
+            
+            // Notes view elements
             const addNoteForm = document.getElementById('add-note-form');
             const newNoteTitle = document.getElementById('new-note-title');
             const newNoteContent = document.getElementById('new-note-content');
@@ -1735,19 +1736,12 @@
             const editNoteContent = document.getElementById('edit-note-content');
             const saveNoteEditBtn = document.getElementById('save-note-edit-btn');
             const cancelNoteEditBtn = document.getElementById('cancel-note-edit-btn');
+            
+            // PWA Install elements
             const installPrompt = document.getElementById('install-prompt');
             const installBtn = document.getElementById('install-btn');
             const cancelInstall = document.getElementById('cancel-install');
-            const autoBackupToggle = document.getElementById('auto-backup-toggle');
-            const backupTime = document.getElementById('backup-time');
-            const backupNowBtn = document.getElementById('backup-now-btn');
-            const backupLocationBtn = document.getElementById('backup-location-btn');
-            const backupStatus = document.getElementById('backup-status');
-            const mobileBackupOptions = document.getElementById('mobile-backup-options');
-            const shareBackupBtn = document.getElementById('share-backup-btn');
-            const saveToDriveBtn = document.getElementById('save-to-drive-btn');
-            const downloadBackupBtn = document.getElementById('download-backup-btn');
-
+            
             // --- UTILITY FUNCTIONS ---
             const saveData = () => localStorage.setItem('ritualAppData', JSON.stringify(appData));
             
@@ -1761,11 +1755,7 @@
                                 enabled: false,
                                 times: ["20:00"]
                             },
-                            theme: "dark",
-                            autoBackup: {
-                                enabled: false,
-                                time: "23:00"
-                            }
+                            theme: "dark"
                         };
                     }
                     if (!appData.notes) {
@@ -1779,12 +1769,6 @@
                     }
                     if (!appData.settings.reminders.times) {
                         appData.settings.reminders.times = ["20:00"];
-                    }
-                    if (!appData.settings.autoBackup) {
-                        appData.settings.autoBackup = {
-                            enabled: false,
-                            time: "23:00"
-                        };
                     }
                 } else {
                     appData.rituals.concentration.push({ 
@@ -1864,9 +1848,10 @@
                     }
                 }
                 
+                // Calculate mindfulness average
                 for (const date in appData.mindfulness) {
                     const score = appData.mindfulness[date];
-                    if (score !== undefined && score !== null) {
+                    if (score !== undefined && score !== -1) {
                         mindfulnessTotal += score;
                         mindfulnessCount++;
                     }
@@ -1944,18 +1929,6 @@
                     dailyNotes.value = '';
                 }
                 
-                const currentMindfulness = appData.mindfulness[dateKey];
-                mindfulnessButtons.forEach(btn => {
-                    btn.classList.remove('selected');
-                    if (parseInt(btn.dataset.score) === currentMindfulness) {
-                        btn.classList.add('selected');
-                        mindfulnessDescription.textContent = mindfulnessMap[btn.dataset.score];
-                    }
-                });
-                if (currentMindfulness === undefined) {
-                    mindfulnessDescription.textContent = '';
-                }
-                
                 const isFuture = isFutureDate(currentDate);
                 
                 if (isFuture) {
@@ -1993,12 +1966,34 @@
                     return listHTML + '</ul>';
                 };
                 
+                // Create mindfulness section
+                const currentMindfulnessScore = appData.mindfulness[dateKey];
+                const mindfulnessHTML = `
+                    <h2>Mindfulness</h2>
+                    <ul class="ritual-list">
+                        <li class="ritual-item ${isFuture ? 'scoring-disabled' : ''}" data-mindfulness="true">
+                            <div class="ritual-item-header">
+                                <div>
+                                    <p>Daily Mindfulness</p>
+                                    <div class="ritual-description">How mindful were you throughout the day?</div>
+                                </div>
+                            </div>
+                            <div class="scoring-buttons">
+                                ${Object.keys(mindfulnessScoreMap).reverse().map(scoreKey => `<button class="score-btn ${currentMindfulnessScore == scoreKey ? 'selected' : ''}" data-score="${scoreKey}">${scoreKey}</button>`).join('')}
+                            </div>
+                            <div class="score-description">${currentMindfulnessScore !== undefined ? mindfulnessScoreMap[currentMindfulnessScore] : ''}</div>
+                        </li>
+                    </ul>
+                `;
+                
                 const concentrationHTML = createRitualListHTML('Concentration', appData.rituals.concentration);
                 const willpowerHTML = createRitualListHTML('Willpower', appData.rituals.willpower);
-                todayRitualsContainer.innerHTML = concentrationHTML + willpowerHTML;
+                
+                // Show mindfulness first, then concentration and willpower
+                todayRitualsContainer.innerHTML = mindfulnessHTML + concentrationHTML + willpowerHTML;
 
                 if (!concentrationHTML && !willpowerHTML) {
-                    todayRitualsContainer.innerHTML = `<div class="no-rituals-message">You have no rituals yet. Go to the 'Rituals' tab to add your first one!</div>`;
+                    todayRitualsContainer.innerHTML = mindfulnessHTML + `<div class="no-rituals-message">You have no rituals yet. Go to the 'Rituals' tab to add your first one!</div>`;
                 }
             };
             
@@ -2012,30 +2007,6 @@
                 saveData();
             });
             
-            mindfulnessButtons.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    if (isFutureDate(currentDate)) {
-                        alert("You cannot log scores for future dates. Please select today or a previous day.");
-                        return;
-                    }
-                    
-                    const score = parseInt(this.dataset.score, 10);
-                    const dateKey = formatDate(currentDate);
-                    
-                    if (this.classList.contains('selected')) {
-                        delete appData.mindfulness[dateKey];
-                        this.classList.remove('selected');
-                        mindfulnessDescription.textContent = '';
-                    } else {
-                        appData.mindfulness[dateKey] = score;
-                        mindfulnessButtons.forEach(b => b.classList.remove('selected'));
-                        this.classList.add('selected');
-                        mindfulnessDescription.textContent = mindfulnessMap[score];
-                    }
-                    saveData();
-                });
-            });
-            
             todayRitualsContainer.addEventListener('click', (e) => {
                 if (e.target.classList.contains('score-btn')) {
                     if (isFutureDate(currentDate)) {
@@ -2045,20 +2016,36 @@
                     
                     const score = parseInt(e.target.dataset.score, 10);
                     const ritualItem = e.target.closest('.ritual-item');
-                    const ritualId = ritualItem.dataset.ritualId;
                     const dateKey = formatDate(currentDate);
                     
-                    if (!appData.scores[dateKey]) appData.scores[dateKey] = {};
-                    
-                    if (e.target.classList.contains('selected')) {
-                        delete appData.scores[dateKey][ritualId];
-                        e.target.classList.remove('selected');
-                        ritualItem.querySelector('.score-description').textContent = '';
+                    // Check if it's a mindfulness score
+                    if (ritualItem.dataset.mindfulness) {
+                        if (e.target.classList.contains('selected')) {
+                            delete appData.mindfulness[dateKey];
+                            e.target.classList.remove('selected');
+                            ritualItem.querySelector('.score-description').textContent = '';
+                        } else {
+                            appData.mindfulness[dateKey] = score;
+                            ritualItem.querySelectorAll('.score-btn').forEach(btn => btn.classList.remove('selected'));
+                            e.target.classList.add('selected');
+                            ritualItem.querySelector('.score-description').textContent = mindfulnessScoreMap[score];
+                        }
                     } else {
-                        appData.scores[dateKey][ritualId] = score;
-                        ritualItem.querySelectorAll('.score-btn').forEach(btn => btn.classList.remove('selected'));
-                        e.target.classList.add('selected');
-                        ritualItem.querySelector('.score-description').textContent = scoreMap[score];
+                        // Regular ritual score
+                        const ritualId = ritualItem.dataset.ritualId;
+                        
+                        if (!appData.scores[dateKey]) appData.scores[dateKey] = {};
+                        
+                        if (e.target.classList.contains('selected')) {
+                            delete appData.scores[dateKey][ritualId];
+                            e.target.classList.remove('selected');
+                            ritualItem.querySelector('.score-description').textContent = '';
+                        } else {
+                            appData.scores[dateKey][ritualId] = score;
+                            ritualItem.querySelectorAll('.score-btn').forEach(btn => btn.classList.remove('selected'));
+                            e.target.classList.add('selected');
+                            ritualItem.querySelector('.score-description').textContent = scoreMap[score];
+                        }
                     }
                     saveData();
                 }
@@ -2271,7 +2258,8 @@
                     habitSelect.innerHTML += `<option value="${ritual.id}">Willpower: ${ritual.name}</option>`;
                 });
                 
-                habitSelect.innerHTML += `<option value="mindfulness">Mindfulness Level</option>`;
+                // Add mindfulness as an option
+                habitSelect.innerHTML += `<option value="mindfulness">Mindfulness: Daily Mindfulness</option>`;
                 
                 if (!selectedHabitId && habitSelect.options.length > 1) {
                     selectedHabitId = habitSelect.options[1].value;
@@ -2309,6 +2297,8 @@
                     
                     const date = new Date(year, month, day);
                     const dateKey = formatDate(date);
+                    
+                    // Check if there's any data for this day
                     const hasRitualData = appData.scores[dateKey] && Object.keys(appData.scores[dateKey]).length > 0;
                     const hasMindfulnessData = appData.mindfulness[dateKey] !== undefined;
                     const hasData = hasRitualData || hasMindfulnessData;
@@ -2332,25 +2322,28 @@
             };
             
             const calculateDayAverage = (dateKey) => {
-                const dayScores = appData.scores[dateKey] || {};
-                const validRitualScores = Object.values(dayScores).filter(score => score !== -1);
-                const mindfulnessScore = appData.mindfulness[dateKey];
-                
+                // Calculate average of all scores for the day
                 let total = 0;
                 let count = 0;
                 
-                if (validRitualScores.length > 0) {
-                    total += validRitualScores.reduce((sum, score) => sum + score, 0);
-                    count += validRitualScores.length;
+                // Add ritual scores
+                const dayScores = appData.scores[dateKey];
+                if (dayScores) {
+                    const validScores = Object.values(dayScores).filter(score => score !== -1);
+                    if (validScores.length > 0) {
+                        total += validScores.reduce((sum, score) => sum + score, 0);
+                        count += validScores.length;
+                    }
                 }
                 
-                if (mindfulnessScore !== undefined && mindfulnessScore !== null) {
+                // Add mindfulness score
+                const mindfulnessScore = appData.mindfulness[dateKey];
+                if (mindfulnessScore !== undefined && mindfulnessScore !== -1) {
                     total += mindfulnessScore;
-                    count += 1;
+                    count++;
                 }
                 
                 if (count === 0) return null;
-                
                 return total / count;
             };
             
@@ -2369,10 +2362,15 @@
                 
                 if (date && score) {
                     const dayScores = appData.scores[date] || {};
-                    const mindfulnessScore = appData.mindfulness[date];
-                    
                     let tooltipHTML = `<strong>${new Date(date).toLocaleDateString()}</strong><br>`;
                     tooltipHTML += `Average: ${parseFloat(score).toFixed(2)}<br><br>`;
+                    
+                    // Add mindfulness score to tooltip
+                    const mindfulnessScore = appData.mindfulness[date];
+                    if (mindfulnessScore !== undefined) {
+                        const scoreText = mindfulnessScore === -1 ? 'N/A' : mindfulnessScore;
+                        tooltipHTML += `Daily Mindfulness: ${scoreText}<br>`;
+                    }
                     
                     for (const ritualId in dayScores) {
                         const ritual = [...appData.rituals.concentration, ...appData.rituals.willpower]
@@ -2382,10 +2380,6 @@
                             const scoreText = scoreValue === -1 ? 'N/A' : scoreValue;
                             tooltipHTML += `${ritual.name}: ${scoreText}<br>`;
                         }
-                    }
-                    
-                    if (mindfulnessScore !== undefined) {
-                        tooltipHTML += `Mindfulness: ${mindfulnessScore}<br>`;
                     }
                     
                     tooltip.innerHTML = tooltipHTML;
@@ -2451,15 +2445,6 @@
                 
                 const yScale = d => innerHeight - (d.score / 3) * innerHeight;
                 
-                const getChartColor = () => {
-                    switch(currentChartType) {
-                        case 'concentration': return 'var(--score-2)';
-                        case 'willpower': return 'var(--score-1)';
-                        case 'mindfulness': return 'var(--mindfulness-color)';
-                        default: return 'var(--primary-color)';
-                    }
-                };
-                
                 const line = document.createElementNS('http://www.w3.org/2000/svg', 'path');
                 let pathData = `M ${xScale(filteredData[0])} ${yScale(filteredData[0])}`;
                 for (let i = 1; i < filteredData.length; i++) {
@@ -2467,7 +2452,20 @@
                 }
                 line.setAttribute('d', pathData);
                 line.setAttribute('fill', 'none');
-                line.setAttribute('stroke', getChartColor());
+                
+                // Set line color based on chart type
+                if (currentChartType === 'combined') {
+                    line.setAttribute('stroke', 'var(--primary-color)');
+                } else if (currentChartType === 'concentration') {
+                    line.setAttribute('stroke', 'var(--score-2)');
+                } else if (currentChartType === 'willpower') {
+                    line.setAttribute('stroke', 'var(--score-1)');
+                } else if (currentChartType === 'mindfulness') {
+                    line.setAttribute('stroke', 'var(--mindfulness-color)');
+                } else {
+                    line.setAttribute('stroke', 'var(--primary-color)');
+                }
+                
                 line.setAttribute('stroke-width', '2');
                 g.appendChild(line);
                 
@@ -2476,7 +2474,20 @@
                     circle.setAttribute('cx', xScale(point));
                     circle.setAttribute('cy', yScale(point));
                     circle.setAttribute('r', '4');
-                    circle.setAttribute('fill', getChartColor());
+                    
+                    // Set circle color based on chart type
+                    if (currentChartType === 'combined') {
+                        circle.setAttribute('fill', 'var(--primary-color)');
+                    } else if (currentChartType === 'concentration') {
+                        circle.setAttribute('fill', 'var(--score-2)');
+                    } else if (currentChartType === 'willpower') {
+                        circle.setAttribute('fill', 'var(--score-1)');
+                    } else if (currentChartType === 'mindfulness') {
+                        circle.setAttribute('fill', 'var(--mindfulness-color)');
+                    } else {
+                        circle.setAttribute('fill', 'var(--primary-color)');
+                    }
+                    
                     circle.setAttribute('data-date', point.dateKey);
                     circle.setAttribute('data-score', point.score);
                     
@@ -2533,53 +2544,54 @@
             
             const getScoreForChart = (dateKey) => {
                 if (currentChartType === 'combined') {
-                    const dayScores = appData.scores[dateKey] || {};
-                    const validRitualScores = Object.values(dayScores).filter(score => score !== -1);
-                    const mindfulnessScore = appData.mindfulness[dateKey];
-                    
+                    // Calculate combined average for the day
                     let total = 0;
                     let count = 0;
                     
-                    if (validRitualScores.length > 0) {
-                        total += validRitualScores.reduce((sum, score) => sum + score, 0);
-                        count += validRitualScores.length;
+                    // Add ritual scores
+                    const dayScores = appData.scores[dateKey];
+                    if (dayScores) {
+                        const validScores = Object.values(dayScores).filter(score => score !== -1);
+                        if (validScores.length > 0) {
+                            total += validScores.reduce((sum, score) => sum + score, 0);
+                            count += validScores.length;
+                        }
                     }
                     
-                    if (mindfulnessScore !== undefined && mindfulnessScore !== null) {
+                    // Add mindfulness score
+                    const mindfulnessScore = appData.mindfulness[dateKey];
+                    if (mindfulnessScore !== undefined && mindfulnessScore !== -1) {
                         total += mindfulnessScore;
-                        count += 1;
+                        count++;
                     }
                     
                     if (count === 0) return null;
                     return total / count;
                 } 
                 else if (currentChartType === 'concentration') {
-                    const dayScores = appData.scores[dateKey] || {};
                     const concentrationScores = appData.rituals.concentration
-                        .map(r => dayScores[r.id])
+                        .map(r => appData.scores[dateKey]?.[r.id])
                         .filter(s => s !== undefined && s !== -1);
                     if (concentrationScores.length === 0) return null;
                     return concentrationScores.reduce((sum, score) => sum + score, 0) / concentrationScores.length;
                 }
                 else if (currentChartType === 'willpower') {
-                    const dayScores = appData.scores[dateKey] || {};
                     const willpowerScores = appData.rituals.willpower
-                        .map(r => dayScores[r.id])
+                        .map(r => appData.scores[dateKey]?.[r.id])
                         .filter(s => s !== undefined && s !== -1);
                     if (willpowerScores.length === 0) return null;
                     return willpowerScores.reduce((sum, score) => sum + score, 0) / willpowerScores.length;
                 }
                 else if (currentChartType === 'mindfulness') {
                     const score = appData.mindfulness[dateKey];
-                    return score !== undefined && score !== null ? score : null;
+                    return score !== undefined && score !== -1 ? score : null;
                 }
                 else if (currentChartType === 'individual' && selectedHabitId) {
                     if (selectedHabitId === 'mindfulness') {
                         const score = appData.mindfulness[dateKey];
-                        return score !== undefined && score !== null ? score : null;
+                        return score !== undefined && score !== -1 ? score : null;
                     } else {
-                        const dayScores = appData.scores[dateKey] || {};
-                        const score = dayScores[selectedHabitId];
+                        const score = appData.scores[dateKey]?.[selectedHabitId];
                         return score !== undefined && score !== -1 ? score : null;
                     }
                 }
@@ -2707,232 +2719,7 @@
                 currentNoteEditId = null;
             });
 
-            // --- ANDROID/MOBILE BACKUP FUNCTIONS ---
-            
-            const showMobileBackupOptions = () => {
-                if (isMobile) {
-                    mobileBackupOptions.style.display = 'block';
-                } else {
-                    mobileBackupOptions.style.display = 'none';
-                }
-            };
-
-            const createBackupBlob = () => {
-                const exportData = {
-                    rituals: appData.rituals,
-                    scores: appData.scores,
-                    mindfulness: appData.mindfulness,
-                    notes: appData.notes,
-                    customNotes: appData.customNotes,
-                    settings: appData.settings,
-                    exportDate: new Date().toISOString(),
-                    version: "1.0"
-                };
-                
-                const dataStr = JSON.stringify(exportData, null, 2);
-                return new Blob([dataStr], { type: 'application/json' });
-            };
-
-            const downloadBackup = (blob, filename = null) => {
-                if (!filename) {
-                    filename = `ritual-tracker-backup-${formatDate(new Date())}.json`;
-                }
-                
-                const url = URL.createObjectURL(blob);
-                const a = document.createElement('a');
-                a.href = url;
-                a.download = filename;
-                document.body.appendChild(a);
-                a.click();
-                document.body.removeChild(a);
-                URL.revokeObjectURL(url);
-                
-                showNotification('Backup downloaded successfully!');
-            };
-
-            const shareBackup = async () => {
-                try {
-                    const blob = createBackupBlob();
-                    const filename = `ritual-tracker-backup-${formatDate(new Date())}.json`;
-                    
-                    // Check if Web Share API is available (works on most mobile browsers)
-                    if (navigator.share && navigator.canShare) {
-                        const file = new File([blob], filename, { type: 'application/json' });
-                        
-                        if (navigator.canShare({ files: [file] })) {
-                            await navigator.share({
-                                files: [file],
-                                title: 'Ritual Tracker Backup',
-                                text: 'My ritual tracker data backup'
-                            });
-                            showNotification('Backup shared successfully!');
-                            return;
-                        }
-                    }
-                    
-                    // Fallback for browsers that don't support file sharing
-                    const url = URL.createObjectURL(blob);
-                    window.open(url, '_blank');
-                    showNotification('Backup opened in new tab - use your browser\'s share function');
-                    
-                } catch (error) {
-                    console.error('Share failed:', error);
-                    // Ultimate fallback - download
-                    downloadBackup(blob);
-                    showNotification('Sharing not available, file downloaded instead');
-                }
-            };
-
-            const saveToCloudDrive = () => {
-                // For Android, this will typically open the file picker allowing selection of cloud storage
-                const blob = createBackupBlob();
-                downloadBackup(blob); // This will trigger the Android download which can be saved to cloud drives
-                showNotification('Use your device\'s download manager to save to cloud storage');
-            };
-
-            const requestBackupFolder = async () => {
-                // Show mobile options on Android devices
-                if (isMobile) {
-                    showMobileBackupOptions();
-                    updateBackupStatus('Choose backup method for mobile', 'backup-success');
-                    return;
-                }
-                
-                // Desktop folder selection (original functionality)
-                if ('showDirectoryPicker' in window) {
-                    try {
-                        backupDirectoryHandle = await window.showDirectoryPicker();
-                        updateBackupStatus('Backup folder selected: ' + backupDirectoryHandle.name, 'backup-success');
-                        showNotification('Backup folder selected. Auto-backups will be saved here when enabled.');
-                    } catch (error) {
-                        if (error.name !== 'AbortError') {
-                            updateBackupStatus('Folder selection failed', 'backup-error');
-                        }
-                    }
-                } else {
-                    updateBackupStatus('Folder selection not supported in this browser', 'backup-error');
-                    showNotification('Folder selection not available. Backups will download normally.');
-                }
-            };
-
-            const performAutoBackup = async () => {
-                try {
-                    const blob = createBackupBlob();
-                    const filename = `ritual-tracker-auto-backup-${formatDate(new Date())}.json`;
-                    
-                    // For mobile devices, always use download method
-                    if (isMobile) {
-                        downloadBackup(blob, filename);
-                        updateBackupStatus('Auto-backup completed - check downloads', 'backup-success');
-                        return;
-                    }
-                    
-                    // Desktop: try to save to selected folder
-                    if (backupDirectoryHandle) {
-                        try {
-                            const fileHandle = await backupDirectoryHandle.getFileHandle(filename, { create: true });
-                            const writable = await fileHandle.createWritable();
-                            await writable.write(blob);
-                            await writable.close();
-                            
-                            showNotification('Daily automatic backup completed to selected folder!');
-                            updateBackupStatus('Last backup: ' + new Date().toLocaleString(), 'backup-success');
-                        } catch (error) {
-                            console.error('Error saving to folder:', error);
-                            downloadBackup(blob, filename);
-                        }
-                    } else {
-                        downloadBackup(blob, filename);
-                    }
-                } catch (error) {
-                    console.error('Backup error:', error);
-                    updateBackupStatus('Backup failed: ' + error.message, 'backup-error');
-                }
-            };
-
-            // --- ENHANCED EXPORT FUNCTION ---
-            const exportToJSON = () => {
-                if (isMobile) {
-                    // On mobile, show options instead of immediate download
-                    showMobileBackupOptions();
-                    showNotification('Choose how you want to save your backup');
-                } else {
-                    // Desktop: direct download
-                    const blob = createBackupBlob();
-                    downloadBackup(blob);
-                }
-            };
-
-            // --- EVENT LISTENERS FOR MOBILE BACKUP ---
-            shareBackupBtn.addEventListener('click', shareBackup);
-            saveToDriveBtn.addEventListener('click', saveToCloudDrive);
-            downloadBackupBtn.addEventListener('click', () => {
-                const blob = createBackupBlob();
-                downloadBackup(blob);
-            });
-
-            // --- SETTINGS VIEW LOGIC (UPDATED FOR MOBILE) ---
-            const renderSettingsView = () => {
-                themeToggle.checked = appData.settings.theme === 'light';
-                reminderToggle.checked = appData.settings.reminders.enabled;
-                autoBackupToggle.checked = appData.settings.autoBackup.enabled;
-                backupTime.value = appData.settings.autoBackup.time;
-                
-                renderReminderList();
-                
-                // Show mobile-specific UI
-                showMobileBackupOptions();
-                
-                themeToggle.addEventListener('change', () => {
-                    appData.settings.theme = themeToggle.checked ? 'light' : 'dark';
-                    saveData();
-                    applyTheme(appData.settings.theme);
-                });
-                
-                reminderToggle.addEventListener('change', () => {
-                    appData.settings.reminders.enabled = reminderToggle.checked;
-                    saveData();
-                    setupReminders();
-                });
-                
-                addReminderBtn.addEventListener('click', () => {
-                    const time = reminderTime.value;
-                    if (time && !appData.settings.reminders.times.includes(time)) {
-                        appData.settings.reminders.times.push(time);
-                        saveData();
-                        renderReminderList();
-                        setupReminders();
-                    }
-                });
-                
-                autoBackupToggle.addEventListener('change', () => {
-                    appData.settings.autoBackup.enabled = autoBackupToggle.checked;
-                    saveData();
-                    setupAutoBackup();
-                    updateBackupStatus();
-                });
-                
-                backupTime.addEventListener('change', () => {
-                    appData.settings.autoBackup.time = backupTime.value;
-                    saveData();
-                    setupAutoBackup();
-                });
-                
-                backupNowBtn.addEventListener('click', () => {
-                    if (isMobile) {
-                        showMobileBackupOptions();
-                    } else {
-                        performAutoBackup();
-                    }
-                });
-                
-                backupLocationBtn.addEventListener('click', () => {
-                    requestBackupFolder();
-                });
-                
-                updateBackupStatus();
-            };
-
+            // --- SETTINGS VIEW LOGIC ---
             const renderReminderList = () => {
                 reminderList.innerHTML = '';
                 
@@ -2962,24 +2749,113 @@
                 });
             };
             
-            const updateBackupStatus = (message = '', className = '') => {
-                if (!message) {
-                    if (appData.settings.autoBackup.enabled) {
-                        if (isMobile) {
-                            message = 'Auto backup enabled - will download to device';
-                        } else {
-                            message = 'Auto backup enabled - next backup today at ' + appData.settings.autoBackup.time;
+            const renderSettingsView = () => {
+                themeToggle.checked = appData.settings.theme === 'light';
+                reminderToggle.checked = appData.settings.reminders.enabled;
+                
+                renderReminderList();
+                
+                themeToggle.addEventListener('change', () => {
+                    appData.settings.theme = themeToggle.checked ? 'light' : 'dark';
+                    saveData();
+                    applyTheme(appData.settings.theme);
+                });
+                
+                reminderToggle.addEventListener('change', () => {
+                    appData.settings.reminders.enabled = reminderToggle.checked;
+                    saveData();
+                    setupReminders();
+                });
+                
+                addReminderBtn.addEventListener('click', () => {
+                    const time = reminderTime.value;
+                    if (time && !appData.settings.reminders.times.includes(time)) {
+                        appData.settings.reminders.times.push(time);
+                        saveData();
+                        renderReminderList();
+                        setupReminders();
+                    }
+                });
+            };
+            
+            // --- EXPORT/IMPORT FUNCTIONS ---
+            const exportToJSON = () => {
+                const exportData = {
+                    rituals: appData.rituals,
+                    scores: appData.scores,
+                    notes: appData.notes,
+                    mindfulness: appData.mindfulness, // Include mindfulness in export
+                    customNotes: appData.customNotes,
+                    settings: appData.settings,
+                    exportDate: new Date().toISOString(),
+                    version: "1.1" // Update version to include mindfulness
+                };
+                
+                const dataStr = JSON.stringify(exportData, null, 2);
+                const blob = new Blob([dataStr], { type: 'application/json' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `ritual-tracker-backup-${formatDate(new Date())}.json`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+                
+                showNotification('Data exported successfully!');
+            };
+            
+            const importFromJSON = (file) => {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    try {
+                        const importedData = JSON.parse(e.target.result);
+                        
+                        if (!importedData.rituals || !importedData.scores || !importedData.notes || !importedData.customNotes) {
+                            throw new Error('Invalid backup file format');
                         }
-                        className = 'backup-success';
-                    } else {
-                        message = 'Auto backup disabled';
-                        className = '';
+                        
+                        appData.rituals = importedData.rituals;
+                        appData.scores = importedData.scores;
+                        appData.notes = importedData.notes;
+                        appData.customNotes = importedData.customNotes;
+                        
+                        // Handle mindfulness data (backward compatibility)
+                        if (importedData.mindfulness) {
+                            appData.mindfulness = importedData.mindfulness;
+                        } else {
+                            appData.mindfulness = {};
+                        }
+                        
+                        if (importedData.settings) {
+                            appData.settings = { ...appData.settings, ...importedData.settings };
+                        }
+                        
+                        saveData();
+                        
+                        renderTodayView();
+                        renderManageRitualsView();
+                        renderPerformanceView();
+                        renderNotesView();
+                        
+                        showNotification('Data imported successfully!');
+                    } catch (error) {
+                        alert('Error importing data: ' + error.message);
+                    }
+                };
+                reader.readAsText(file);
+            };
+            
+            exportBtn.addEventListener('click', exportToJSON);
+            importBtn.addEventListener('click', () => importFile.click());
+            importFile.addEventListener('change', (e) => {
+                if (e.target.files.length > 0) {
+                    if (confirm('This will overwrite all current data. Are you sure?')) {
+                        importFromJSON(e.target.files[0]);
                     }
                 }
-                backupStatus.textContent = message;
-                backupStatus.className = 'backup-status ' + className;
-            };
-
+            });
+            
             // --- REMINDER SYSTEM ---
             const setupReminders = () => {
                 reminderTimeouts.forEach(timeout => clearTimeout(timeout));
@@ -3016,7 +2892,7 @@
                                       appData.mindfulness[todayKey] !== undefined;
                 
                 if (!hasLoggedToday) {
-                    showNotification("Time to log your rituals and mindfulness! Don't forget to track your progress for today.");
+                    showNotification("Time to log your rituals! Don't forget to track your progress for today.");
                 }
             };
             
@@ -3045,93 +2921,12 @@
                 applyTheme(savedTheme);
                 themeToggle.checked = savedTheme === 'light';
             };
-
-            // --- DAILY BACKUP SYSTEM ---
-            const setupAutoBackup = () => {
-                backupTimeouts.forEach(timeout => clearTimeout(timeout));
-                backupTimeouts = [];
-                
-                if (!appData.settings.autoBackup.enabled) {
-                    return;
-                }
-                
-                const [hours, minutes] = appData.settings.autoBackup.time.split(':').map(Number);
-                const now = new Date();
-                const backupTime = new Date();
-                backupTime.setHours(hours, minutes, 0, 0);
-                
-                if (backupTime <= now) {
-                    backupTime.setDate(backupTime.getDate() + 1);
-                }
-                
-                const timeUntilBackup = backupTime.getTime() - now.getTime();
-                
-                const timeout = setTimeout(() => {
-                    performAutoBackup();
-                    setupAutoBackup();
-                }, timeUntilBackup);
-                
-                backupTimeouts.push(timeout);
-                
-                updateBackupStatus();
-            };
-            
-            // --- EXPORT/IMPORT FUNCTIONS ---
-            const importFromJSON = (file) => {
-                const reader = new FileReader();
-                reader.onload = (e) => {
-                    try {
-                        const importedData = JSON.parse(e.target.result);
-                        
-                        if (!importedData.rituals || !importedData.scores || !importedData.notes || !importedData.customNotes) {
-                            throw new Error('Invalid backup file format');
-                        }
-                        
-                        appData.rituals = importedData.rituals;
-                        appData.scores = importedData.scores;
-                        appData.notes = importedData.notes;
-                        appData.customNotes = importedData.customNotes;
-                        appData.mindfulness = importedData.mindfulness || {};
-                        
-                        if (importedData.settings) {
-                            appData.settings = { ...appData.settings, ...importedData.settings };
-                        }
-                        
-                        saveData();
-                        
-                        renderTodayView();
-                        renderManageRitualsView();
-                        renderPerformanceView();
-                        renderNotesView();
-                        renderSettingsView();
-                        
-                        showNotification('Data imported successfully!');
-                    } catch (error) {
-                        alert('Error importing data: ' + error.message);
-                    }
-                };
-                reader.readAsText(file);
-            };
             
             // --- INITIALIZATION ---
             loadData();
             loadTheme();
             setupReminders();
-            setupAutoBackup();
             renderTodayView();
-            
-            exportBtn.addEventListener('click', exportToJSON);
-            importBtn.addEventListener('click', () => importFile.click());
-            importFile.addEventListener('change', (e) => {
-                if (e.target.files.length > 0) {
-                    if (confirm('This will overwrite all current data. Are you sure?')) {
-                        importFromJSON(e.target.files[0]);
-                    }
-                }
-            });
-
-            // Initialize mobile backup UI
-            showMobileBackupOptions();
         });
     </script>
 </body>
